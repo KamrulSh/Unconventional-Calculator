@@ -1,6 +1,7 @@
-const defaultResult =  0;
+const defaultResult = 0;
 let currentResult = defaultResult;
 let calculationDeccription;
+let logEntries = [];
 
 // get user inputed number
 function getUserInputedNumber() {
@@ -13,12 +14,25 @@ function getCalculatedOutput(operator, resultbeforeCalc, finalResult) {
     outputResult(currentResult, calculationDeccription);
 }
 
+function writeOperationLog(operationId, prevCurrentResult, userInputedNumber, currentResult) {
+    const logEntry = {
+        operation: operationId,
+        prevValue: prevCurrentResult,
+        inputValue: userInputedNumber,
+        result: currentResult
+    };
+    logEntries.push(logEntry);
+    console.log(logEntry.operation);
+    console.log(logEntries);
+}
+
 // this function adds two numbers
 function addition() {
     const prevCurrentResult = currentResult;
     const userInputedNumber = getUserInputedNumber();
     currentResult = currentResult + userInputedNumber;
     getCalculatedOutput("+", prevCurrentResult, userInputedNumber);
+    writeOperationLog("ADD", prevCurrentResult, userInputedNumber, currentResult);
 }
 
 // this function subtracts two numbers
@@ -27,6 +41,7 @@ function subtraction() {
     const userInputedNumber = getUserInputedNumber();
     currentResult = currentResult - userInputedNumber;
     getCalculatedOutput("-", prevCurrentResult, userInputedNumber);
+    writeOperationLog("SUB", prevCurrentResult, userInputedNumber, currentResult);
 }
 
 // this function multiplies two numbers
@@ -35,6 +50,7 @@ function multiplication() {
     const userInputedNumber = getUserInputedNumber();
     currentResult = currentResult * userInputedNumber;
     getCalculatedOutput("*", prevCurrentResult, userInputedNumber);
+    writeOperationLog("MUL", prevCurrentResult, userInputedNumber, currentResult);
 }
 
 // this function devides two numbers
@@ -43,6 +59,7 @@ function division() {
     const userInputedNumber = getUserInputedNumber();
     currentResult = currentResult / userInputedNumber;
     getCalculatedOutput("/", prevCurrentResult, userInputedNumber);
+    writeOperationLog("DIV", prevCurrentResult, userInputedNumber, currentResult);
 }
 
 addBtn.addEventListener("click", addition);
