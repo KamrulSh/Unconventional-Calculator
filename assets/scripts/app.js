@@ -1,11 +1,16 @@
 const defaultResult =  0;
-let currentNumber = defaultResult;
+let currentResult = defaultResult;
 let calculationDeccription;
 
-function add() {
-    calculationDeccription = currentNumber + "+" + userInput.value;
-    currentNumber = currentNumber + parseInt(userInput.value);
-    outputResult(currentNumber, calculationDeccription);
+function getUserInputedNumber() {
+    return parseInt(userInput.value);
 }
 
-addBtn.addEventListener("click", add);
+function addition() {
+    const userInputedNumber = getUserInputedNumber();
+    calculationDeccription = currentResult + "+" + userInputedNumber;
+    currentResult = currentResult + userInputedNumber;
+    outputResult(currentResult, calculationDeccription);
+}
+
+addBtn.addEventListener("click", addition);
