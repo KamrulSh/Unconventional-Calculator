@@ -8,6 +8,27 @@ function getUserInputedNumber() {
     return parseFloat(userInput.value);
 }
 
+// select the calculation operation
+function chooseCalculationType(operationType) {
+    const prevCurrentResult = currentResult;
+    const userInputedNumber = getUserInputedNumber();
+    if (operationType == "ADD") {
+        currentResult += userInputedNumber;
+        mathOperator = "+";
+    } else if (operationType == "SUB") {
+        currentResult -= userInputedNumber;
+        mathOperator = "-";
+    } else if (operationType == "MUL") {
+        currentResult *= userInputedNumber;
+        mathOperator = "*";
+    } else {
+        currentResult /= userInputedNumber;
+        mathOperator = "/";
+    }
+    getCalculatedOutput(mathOperator, prevCurrentResult, userInputedNumber);
+    writeOperationLog(operationType, prevCurrentResult, userInputedNumber, currentResult);
+}
+
 // show the calculated output with log
 function getCalculatedOutput(operator, resultBeforeCalc, finalResult) {
     calculationDeccription = resultBeforeCalc + operator + finalResult;
@@ -28,38 +49,22 @@ function writeOperationLog(operationId, prevCurrentResult, userInputedNumber, cu
 
 // this function adds two numbers
 function addition() {
-    const prevCurrentResult = currentResult;
-    const userInputedNumber = getUserInputedNumber();
-    currentResult += userInputedNumber;
-    getCalculatedOutput("+", prevCurrentResult, userInputedNumber);
-    writeOperationLog("ADD", prevCurrentResult, userInputedNumber, currentResult);
+    chooseCalculationType("ADD");
 }
 
 // this function subtracts two numbers
 function subtraction() {
-    const prevCurrentResult = currentResult;
-    const userInputedNumber = getUserInputedNumber();
-    currentResult -= userInputedNumber;
-    getCalculatedOutput("-", prevCurrentResult, userInputedNumber);
-    writeOperationLog("SUB", prevCurrentResult, userInputedNumber, currentResult);
+    chooseCalculationType("SUB");
 }
 
 // this function multiplies two numbers
 function multiplication() {
-    const prevCurrentResult = currentResult;
-    const userInputedNumber = getUserInputedNumber();
-    currentResult *= userInputedNumber;
-    getCalculatedOutput("*", prevCurrentResult, userInputedNumber);
-    writeOperationLog("MUL", prevCurrentResult, userInputedNumber, currentResult);
+    chooseCalculationType("MUL");
 }
 
 // this function devides two numbers
 function division() {
-    const prevCurrentResult = currentResult;
-    const userInputedNumber = getUserInputedNumber();
-    currentResult /= userInputedNumber;
-    getCalculatedOutput("/", prevCurrentResult, userInputedNumber);
-    writeOperationLog("DIV", prevCurrentResult, userInputedNumber, currentResult);
+    chooseCalculationType("DIV");
 }
 
 addBtn.addEventListener("click", addition);
