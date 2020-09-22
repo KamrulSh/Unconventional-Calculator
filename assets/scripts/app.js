@@ -12,13 +12,18 @@ function getUserInputedNumber() {
 function chooseCalculationType(operationType) {
     const prevCurrentResult = currentResult;
     const userInputedNumber = getUserInputedNumber();
-    if (operationType == "ADD") {
+
+    if (userInputedNumber === 0) {
+        return;
+    }
+
+    if (operationType === "ADD") {
         currentResult += userInputedNumber;
         mathOperator = "+";
-    } else if (operationType == "SUB") {
+    } else if (operationType === "SUB") {
         currentResult -= userInputedNumber;
         mathOperator = "-";
-    } else if (operationType == "MUL") {
+    } else if (operationType === "MUL") {
         currentResult *= userInputedNumber;
         mathOperator = "*";
     } else {
