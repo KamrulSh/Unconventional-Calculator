@@ -9,8 +9,8 @@ function getUserInputedNumber() {
 }
 
 // show the calculated output with log
-function getCalculatedOutput(operator, resultbeforeCalc, finalResult) {
-    calculationDeccription = resultbeforeCalc + operator + finalResult;
+function getCalculatedOutput(operator, resultBeforeCalc, finalResult) {
+    calculationDeccription = resultBeforeCalc + operator + finalResult;
     outputResult(currentResult, calculationDeccription);
 }
 
@@ -30,7 +30,7 @@ function writeOperationLog(operationId, prevCurrentResult, userInputedNumber, cu
 function addition() {
     const prevCurrentResult = currentResult;
     const userInputedNumber = getUserInputedNumber();
-    currentResult = currentResult + userInputedNumber;
+    currentResult += userInputedNumber;
     getCalculatedOutput("+", prevCurrentResult, userInputedNumber);
     writeOperationLog("ADD", prevCurrentResult, userInputedNumber, currentResult);
 }
@@ -39,7 +39,7 @@ function addition() {
 function subtraction() {
     const prevCurrentResult = currentResult;
     const userInputedNumber = getUserInputedNumber();
-    currentResult = currentResult - userInputedNumber;
+    currentResult -= userInputedNumber;
     getCalculatedOutput("-", prevCurrentResult, userInputedNumber);
     writeOperationLog("SUB", prevCurrentResult, userInputedNumber, currentResult);
 }
@@ -48,7 +48,7 @@ function subtraction() {
 function multiplication() {
     const prevCurrentResult = currentResult;
     const userInputedNumber = getUserInputedNumber();
-    currentResult = currentResult * userInputedNumber;
+    currentResult *= userInputedNumber;
     getCalculatedOutput("*", prevCurrentResult, userInputedNumber);
     writeOperationLog("MUL", prevCurrentResult, userInputedNumber, currentResult);
 }
@@ -57,7 +57,7 @@ function multiplication() {
 function division() {
     const prevCurrentResult = currentResult;
     const userInputedNumber = getUserInputedNumber();
-    currentResult = currentResult / userInputedNumber;
+    currentResult /= userInputedNumber;
     getCalculatedOutput("/", prevCurrentResult, userInputedNumber);
     writeOperationLog("DIV", prevCurrentResult, userInputedNumber, currentResult);
 }
