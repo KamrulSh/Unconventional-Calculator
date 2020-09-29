@@ -26,6 +26,28 @@ function writeOperationLog(operationId, prevCurrentResult, userInputedNumber, cu
     console.log(logEntries);
 }
 
+// calculate all in a single function
+function calculateNumber(operation) {
+    const prevCurrentResult = currentResult;
+    const userInputedNumber = getUserInputedNumber();
+    let operator;
+    if (operation === "ADD") {
+        currentResult += userInputedNumber;
+        operator = "+";
+    } else if (operation === "SUB") {
+        currentResult -= userInputedNumber;
+        operator = "-";
+    } else if (operation === "MUL") {
+        currentResult *= userInputedNumber;
+        operator = "*";
+    } else if (operation === "DIV") {
+        currentResult /= userInputedNumber;
+        operator = "/";
+    }
+    getCalculatedOutput(operator, prevCurrentResult, userInputedNumber);
+    writeOperationLog(operation, prevCurrentResult, userInputedNumber, currentResult);
+}
+/*
 // this function adds two numbers
 function addition() {
     const prevCurrentResult = currentResult;
@@ -61,9 +83,8 @@ function division() {
     getCalculatedOutput("/", prevCurrentResult, userInputedNumber);
     writeOperationLog("DIV", prevCurrentResult, userInputedNumber, currentResult);
 }
-
-addBtn.addEventListener("click", addition);
-subtractBtn.addEventListener("click", subtraction);
-multiplyBtn.addEventListener("click", multiplication);
-divideBtn.addEventListener("click", division);
-
+*/
+addBtn.addEventListener("click", calculateNumber.bind(this, "ADD"));
+subtractBtn.addEventListener("click", calculateNumber.bind(this, "SUB"));
+multiplyBtn.addEventListener("click", calculateNumber.bind(this, "MUL"));
+divideBtn.addEventListener("click", calculateNumber.bind(this, "DIV"));
